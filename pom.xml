@@ -17,7 +17,7 @@
         <minecraft.version>26.3</minecraft.version>
 
         <spigot.version>${minecraft.version}-R0.1-SNAPSHOT</spigot.version>
-        <papi.version>2.10.9</papi.version>
+        <papi.version>2.11.6</papi.version>
         <authme.version>5.6.0-SNAPSHOT</authme.version>
         <authlib.version>7.0.61</authlib.version>
         <worldguard.version>7.0.4-SNAPSHOT</worldguard.version>
@@ -102,7 +102,7 @@
         <!--PlaceholderAPI Repository-->
         <repository>
             <id>placeholderapi</id>
-            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+            <url>https://repo.extendedclip.com/releases/</url>
         </repository>
         <!--Mojang Repository-->
         <repository>
