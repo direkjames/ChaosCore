@@ -1179,10 +1179,10 @@ public class ItemHandler {
                         ReflectionUtils.getMethod(builder.getClass(), MinecraftMethod.set.getMethod(), ReflectionUtils.getMinecraftClass("DataComponentType"), Object.class).invoke(builder, customDataType, customData);
                         Object componentPatch = ReflectionUtils.getMethod(builder.getClass(), MinecraftMethod.build.getMethod()).invoke(builder);
                         ReflectionUtils.getMethod(nmsItem.getClass(), MinecraftMethod.applyComponentsAndValidate.getMethod(), componentPatch.getClass()).invoke(nmsItem, componentPatch);
-                        return (ItemStack) ReflectionUtils.getMethod(craftItemStack, "asCraftMirror", ReflectionUtils.getMinecraftClass("ItemStack")).invoke(null, nmsItem);
+                        return (ItemStack) ReflectionUtils.getCraftMirror(ReflectionUtils.getMinecraftClass("ItemStack")).invoke(null, nmsItem);
                     } else {
                         ReflectionUtils.getMethod(nmsItem.getClass(), MinecraftMethod.setTag.getMethod(), tag.getClass()).invoke(nmsItem, tag);
-                        return (ItemStack) ReflectionUtils.getMethod(ReflectionUtils.getCraftBukkitClass("inventory.CraftItemStack"), "asCraftMirror", nmsItem.getClass()).invoke(null, nmsItem);
+                        return (ItemStack) ReflectionUtils.getCraftMirror(nmsItem.getClass()).invoke(null, nmsItem);
                     }
                 } catch (ConcurrentModificationException ignored) {
                 } catch (Exception e) {

@@ -494,6 +494,27 @@ public class ReflectionUtils {
     }
 
     /**
+     * Gets the CraftItemStack method that wraps an NMS ItemStack as a Bukkit ItemStack.
+     * Spigot names this method asCraftMirror, while Paper 26.3+ (and its forks such as Purpur)
+     * renamed it to asBukkitMirror, so both names are tried.
+     *
+     * @param nmsItemClass - the NMS ItemStack class being mirrored.
+     * @return An object that invokes the mirror method.
+     * @throws IllegalStateException If neither method can be found.
+     */
+    public static @Nonnull MethodInvoker getCraftMirror(final @Nonnull Class<?> nmsItemClass) {
+        final Class<?> craftItemStack = getCraftBukkitClass("inventory.CraftItemStack");
+        try {
+            return getMethod(craftItemStack, "asCraftMirror", nmsItemClass);
+        } catch (IllegalStateException e) {
+            final String aliasKey = craftItemStack.getName() + "|asCraftMirror|null|" + Arrays.toString(new Class<?>[]{nmsItemClass});
+            final MethodInvoker invoker = getMethod(craftItemStack, "asBukkitMirror", nmsItemClass);
+            METHOD_INVOKER_CACHE.put(aliasKey, invoker);
+            return invoker;
+        }
+    }
+
+    /**
      * Retrieve a class in the org.bukkit.* package.
      *
      * @param name - the name of the class, excluding the package.

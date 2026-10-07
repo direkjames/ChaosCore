@@ -11,10 +11,10 @@
     <description>A shaded core utility.</description>
     <url>https://github.com/RockinChaos/ChaosCore/</url>
 
-    <version>1.1.7-SNAPSHOT</version>
+    <version>1.1.8-SNAPSHOT</version>
 
     <properties>
-        <minecraft.version>26.2</minecraft.version>
+        <minecraft.version>26.3</minecraft.version>
 
         <spigot.version>${minecraft.version}-R0.1-SNAPSHOT</spigot.version>
         <papi.version>2.10.9</papi.version>

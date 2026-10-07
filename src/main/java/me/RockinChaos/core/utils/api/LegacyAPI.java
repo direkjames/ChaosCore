@@ -578,7 +578,7 @@ public class LegacyAPI {
                     ReflectionUtils.getMethod(modifiers.getClass(), MinecraftMethod.add.getMethod(), baseClass).invoke(modifiers, attrib);
                 }
                 ReflectionUtils.getMethod(tag.getClass(), MinecraftMethod.set.getMethod(), String.class, baseClass).invoke(tag, "AttributeModifiers", modifiers);
-                return (ItemStack) ReflectionUtils.getMethod(craftItemStack, "asCraftMirror", nms.getClass()).invoke(null, nms);
+                return (ItemStack) ReflectionUtils.getCraftMirror(nms.getClass()).invoke(null, nms);
             } catch (Exception e) {
                 ServerUtils.sendDebugTrace(e);
             }
